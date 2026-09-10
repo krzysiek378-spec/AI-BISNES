@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI BIZNES CRM</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         NAWIGACJA
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                AI BIZNES
+            </div>
+
+            <div class="nav-actions">
+
+                <a href="#formularz">
+                    Formularz
+                </a>
+
+                <button
+                    id="loginNavButton"
+                    type="button"
+                    onclick="showLogin()"
+                >
+                    Panel admina
+                </button>
+
+                <button
+                    id="logoutNavButton"
+                    class="hidden"
+                    type="button"
+                    onclick="logout()"
+                >
+                    Wyloguj
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                CRM SPRZEDAŻOWY
+            </div>
+
+            <h1>
+                Zarządzaj leadami.<br>
+                Sprzedawaj więcej.
+            </h1>
+
+            <p>
+                Zbieraj zgłoszenia, prowadź klientów,
+                planuj follow-up i kontroluj sprzedaż
+                w jednym miejscu.
+            </p>
+
+            <a
+                href="#formularz"
+                class="hero-button"
+            >
+                Dodaj zgłoszenie
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         FORMULARZ
+    ========================== -->
+
+    <section
+        id="formularz"
+        class="section"
+    >
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <small>
+                    NOWY LEAD
+                </small>
+
+                <h2>
+                    Zostaw zgłoszenie
+                </h2>
+
+                <p>
+                    Uzupełnij dane kontaktowe.
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+
+                        <label for="name">
+                            Imię / firma
+                        </label>
+
+                        <input
+                            id="name"
+                            type="text"
+                            placeholder="Np. Jan Kowalski"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="contact">
+                            Kontakt
+                        </label>
+
+                        <input
+                            id="contact"
+                            type="text"
+                            placeholder="Telefon lub e-mail"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="problem">
+                            Czego potrzebujesz?
+                        </label>
+
+                        <select id="problem">
+
+                            <option value="">
+                                Wybierz
+                            </option>
+
+                            <option value="Pozyskiwanie klientów">
+                                Pozyskiwanie klientów
+                            </option>
+
+                            <option value="Automatyzacja">
+                                Automatyzacja
+                            </option>
+
+                            <option value="CRM">
+                                CRM
+                            </option>
+
+                            <option value="AI">
+                                AI
+                            </option>
+
+                            <option value="Inne">
+                                Inne
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="budget">
+                            Budżet
+                        </label>
+
+                        <input
+                            id="budget"
+                            type="number"
+                            value="500"
+                            min="0"
+                            step="100"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="source">
+                            Źródło leada
+                        </label>
+
+                        <select id="source">
+
+                            <option value="strona">
+                                Strona WWW
+                            </option>
+
+                            <option value="tiktok">
+                                TikTok
+                            </option>
+
+                            <option value="instagram">
+                                Instagram
+                            </option>
+
+                            <option value="facebook">
+                                Facebook
+                            </option>
+
+                            <option value="google">
+                                Google
+                            </option>
+
+                            <option value="polecenie">
+                                Polecenie
+                            </option>
+
+                            <option value="inne">
+                                Inne
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="description">
+                        Opis
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Napisz krótko, czego potrzebujesz..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    id="sendButton"
+                    class="primary-button"
+                    type="button"
+                    onclick="sendLead()"
+                >
+                    Zapisz zgłoszenie
+                </button>
+
+
+                <div
+                    id="message"
+                    class="form-message"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOGOWANIE
+    ========================== -->
+
+    <section
+        id="loginSection"
+        class="section"
+    >
+
+        <div class="section-container">
+
+            <div class="login-card">
+
+                <div class="section-heading">
+
+                    <small>
+                        PANEL ADMINA
+                    </small>
+
+                    <h2>
+                        Logowanie
+                    </h2>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="adminEmail">
+                        E-mail
+                    </label>
+
+                    <input
+                        id="adminEmail"
+                        type="email"
+                        placeholder="E-mail"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="adminPassword">
+                        Hasło
+                    </label>
+
+                    <input
+                        id="adminPassword"
+                        type="password"
+                        placeholder="Hasło"
+                    >
+
+                </div>
+
+
+                <button
+                    id="loginButton"
+                    class="primary-button"
+                    type="button"
+                    onclick="login()"
+                >
+                    Zaloguj się
+                </button>
+
+
+                <div
+                    id="loginMessage"
+                    class="form-message"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PANEL ADMINA
+    ========================== -->
+
+    <main
+        id="adminPanel"
+        class="hidden"
+    >
+
+        <section
+            id="dashboard"
+            class="section admin-section"
+        >
+
+            <div class="section-container">
+
+
+                <!-- HEADER -->
+
+                <div class="dashboard-header">
+
+                    <div>
+
+                        <small>
+                            PANEL ADMINA
+                        </small>
+
+                        <h2>
+                            Dashboard sprzedaży
+                        </h2>
+
+                        <p>
+                            Zalogowano jako:
+                            <strong id="loggedUser">
+                                Admin
+                            </strong>
+                        </p>
+
+                    </div>
+
+
+                    <div class="connection-status">
+
+                        <span
+                            id="connectionDot"
+                            class="connection-dot"
+                        ></span>
+
+                        <span id="connectionText">
+                            Łączenie...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     GŁÓWNE STATYSTYKI
+                ========================== -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <small>
+                            WSZYSTKIE LEADY
+                        </small>
+
+                        <strong id="leadCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <small>
+                            POTENCJALNA SPRZEDAŻ
+                        </small>
+
+                        <strong id="leadValue">
+                            0 zł
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <small>
+                            NOWE
+                        </small>
+
+                        <strong id="newCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <small>
+                            OFERTY
+                        </small>
+
+                        <strong id="offerCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <small>
+                            WYGRANE
+                        </small>
+
+                        <strong id="wonCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card stat-card-won">
+
+                        <small>
+                            SPRZEDAŻ WYGRANA
+                        </small>
+
+                        <strong id="wonValue">
+                            0 zł
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     TEN MIESIĄC
+                ========================== -->
+
+                <div class="sales-dashboard monthly-dashboard">
+
+                    <div class="sales-dashboard-header">
+
+                        <div>
+
+                            <small>
+                                TEN MIESIĄC
+                            </small>
+
+                            <h3>
+                                Wyniki miesięczne
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sales-stats-grid">
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Sprzedaż w tym miesiącu
+                            </div>
+
+                            <div
+                                id="monthWonValue"
+                                class="sales-stat-value"
+                            >
+                                0 zł
+                            </div>
+
+                            <div class="sales-stat-description">
+                                wartość wygranych klientów
+                            </div>
+
+                        </div>
+
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Wygrane w tym miesiącu
+                            </div>
+
+                            <div
+                                id="monthWonCount"
+                                class="sales-stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="sales-stat-description">
+                                zamkniętych sprzedaży
+                            </div>
+
+                        </div>
+
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Kontakty w tym miesiącu
+                            </div>
+
+                            <div
+                                id="monthContacts"
+                                class="sales-stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="sales-stat-description">
+                                wykonanych kontaktów
+                            </div>
+
+                        </div>
+
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Średnia wygrana
+                            </div>
+
+                            <div
+                                id="monthAverageWon"
+                                class="sales-stat-value"
+                            >
+                                0 zł
+                            </div>
+
+                            <div class="sales-stat-description">
+                                średnia wartość sprzedaży
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ŹRÓDŁA LEADÓW
+                ========================== -->
+
+                <div class="sales-dashboard">
+
+                    <div class="sales-dashboard-header">
+
+                        <div>
+
+                            <small>
+                                MARKETING
+                            </small>
+
+                            <h3>
+                                Źródła klientów
+                            </h3>
+
+                            <p>
+                                Sprawdź, które kanały dostarczają leady,
+                                klientów i sprzedaż.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="sourceStats"
+                        class="source-stats"
+                    >
+
+                        <div class="empty">
+                            Brak danych o źródłach.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     AKTYWNOŚĆ
+                ========================== -->
+
+                <div class="sales-dashboard">
+
+                    <div class="sales-dashboard-header">
+
+                        <div>
+
+                            <small>
+                                WYNIKI
+                            </small>
+
+                            <h3>
+                                Aktywność sprzedażowa
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sales-stats-grid">
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Kontakty dzisiaj
+                            </div>
+
+                            <div
+                                id="todayContacts"
+                                class="sales-stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="sales-stat-description">
+                                wykonanych kontaktów
+                            </div>
+
+                        </div>
+
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Kontakty w tym tygodniu
+                            </div>
+
+                            <div
+                                id="weekContacts"
+                                class="sales-stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="sales-stat-description">
+                                od poniedziałku
+                            </div>
+
+                        </div>
+
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Oferty
+                            </div>
+
+                            <div
+                                id="offerStats"
+                                class="sales-stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="sales-stat-description">
+                                leadów na etapie oferty
+                            </div>
+
+                        </div>
+
+
+                        <div class="sales-stat-card">
+
+                            <div class="sales-stat-label">
+                                Konwersja
+                            </div>
+
+                            <div
+                                id="conversionRate"
+                                class="sales-stat-value"
+                            >
+                                0%
+                            </div>
+
+                            <div class="sales-stat-description">
+                                wygrane / wszystkie leady
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     FOLLOW-UP
+                ========================== -->
+
+                <div
+                    id="todayReminders"
+                    class="today-reminders"
+                >
+
+                    <div class="today-reminders-header">
+
+                        <div>
+
+                            <small>
+                                FOLLOW-UP
+                            </small>
+
+                            <h3>
+                                Dzisiejsze przypomnienia
+                            </h3>
+
+                        </div>
+
+
+                        <div
+                            id="todayRemindersCount"
+                            class="today-reminders-count"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="todayRemindersList"
+                        class="today-reminders-list"
+                    >
+
+                        <div class="empty">
+                            Brak przypomnień na dziś.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ETAPY SPRZEDAŻY
+                ========================== -->
+
+                <div class="pipeline-section">
+
+                    <div class="pipeline-header">
+
+                        <div>
+
+                            <small>
+                                SPRZEDAŻ
+                            </small>
+
+                            <h3>
+                                Etapy sprzedaży
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="pipeline-grid">
+
+                        <div class="pipeline-card">
+
+                            <span>
+                                Nowe
+                            </span>
+
+                            <strong id="pipelineNew">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pipeline-card">
+
+                            <span>
+                                Kontakt
+                            </span>
+
+                            <strong id="pipelineContact">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pipeline-card">
+
+                            <span>
+                                Oferta
+                            </span>
+
+                            <strong id="pipelineOffer">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pipeline-card">
+
+                            <span>
+                                Wygrane
+                            </span>
+
+                            <strong id="pipelineWon">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pipeline-card">
+
+                            <span>
+                                Przegrane
+                            </span>
+
+                            <strong id="pipelineLost">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     CRM
+                ========================== -->
+
+                <div class="crm-section">
+
+                    <div class="crm-header">
+
+                        <div>
+
+                            <small>
+                                CRM
+                            </small>
+
+                            <h3>
+                                Baza klientów
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="crm-toolbar">
+
+                        <input
+                            id="search"
+                            type="text"
+                            placeholder="Szukaj klienta..."
+                            oninput="renderLeads()"
+                        >
+
+
+                        <select
+                            id="statusFilter"
+                            onchange="renderLeads()"
+                        >
+
+                            <option value="all">
+                                Wszystkie statusy
+                            </option>
+
+                            <option value="nowy">
+                                Nowy
+                            </option>
+
+                            <option value="kontakt">
+                                Kontakt
+                            </option>
+
+                            <option value="oferta">
+                                Oferta
+                            </option>
+
+                            <option value="wygrany">
+                                Wygrany
+                            </option>
+
+                            <option value="przegrany">
+                                Przegrany
+                            </option>
+
+                        </select>
+
+
+                        <button
+                            type="button"
+                            onclick="loadLeads()"
+                        >
+                            Odśwież
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="leads"
+                        class="leads-container"
+                    >
+
+                        <div class="empty">
+                            Pobieranie klientów...
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         STOPKA
+    ========================== -->
+
+    <footer>
+
+        <div class="section-container">
+            AI BIZNES CRM
+        </div>
+
+    </footer>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
